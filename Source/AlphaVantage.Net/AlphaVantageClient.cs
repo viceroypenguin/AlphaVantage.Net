@@ -45,6 +45,8 @@ public sealed partial class AlphaVantageClient
 	/// instance is not shared with any other instance. This can cause issues with calling Alpha Vantage in excess of
 	/// allowed API rate limits.
 	/// </remarks>
+	[SuppressMessage("Design", "CA2000:Dispose objects before losing scope", Justification = "HttpClient won't be disposed.")]
+	[SuppressMessage("Design", "CA5399:HttpClient is created without enabling CheckCertificateRevocationList", Justification = "Unnecessary check for AlphaVantage.")]
 	public AlphaVantageClient(
 		string apiKey,
 		int maxCallsPerMinute,
@@ -53,8 +55,30 @@ public sealed partial class AlphaVantageClient
 		Guard.IsNotNull(apiKey, nameof(apiKey));
 
 		_rateLimiter = new RateLimiter(maxCallsPerMinute);
-		_alphaVantageApi = RestService.For<IAlphaVantageApi>("https://www.alphavantage.co/");
+		_alphaVantageApi = RestService.For<IAlphaVantageApi>(
+			new HttpClient(
+				new HttpClientHandler
+				{
+					AutomaticDecompression = System.Net.DecompressionMethods.All,
+				})
+			{
+				BaseAddress = new Uri("https://www.alphavantage.co/"),
+			},
+			settings: new() { ContentSerializer = new SystemTextJsonContentSerializer(JsonSerializerOptions), });
 		_apiKey = apiKey;
 		_logger = logger ?? NullLogger<AlphaVantageClient>.Instance;
 	}
+
+	internal static readonly JsonSerializerOptions JsonSerializerOptions =
+		new()
+		{
+			DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+			PropertyNameCaseInsensitive = true,
+			NumberHandling = JsonNumberHandling.AllowReadingFromString,
+			Converters =
+			{
+				new InvalidDateOnlyConverter(),
+				new InvalidDecimalConverter(),
+			},
+		};
 }

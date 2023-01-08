@@ -1,9 +1,5 @@
 ﻿using AlphaVantage;
 using CommunityToolkit.Diagnostics;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Refit;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
@@ -33,7 +29,11 @@ public static class AlphaVantageServiceCollectionExtensions
 		services.AddSingleton(sp =>
 			new AlphaVantageClient.RateLimiter(
 				sp.GetRequiredService<IOptions<AlphaVantageOptions>>().Value.MaxApiCallsPerMinute));
-		services.AddRefitClient<IAlphaVantageApi>()
+		services
+			.AddRefitClient<IAlphaVantageApi>(settings: new()
+			{
+				ContentSerializer = new SystemTextJsonContentSerializer(AlphaVantageClient.JsonSerializerOptions),
+			})
 			.ConfigureHttpClient(c => c.BaseAddress = new Uri("https://www.alphavantage.co/"))
 			.ConfigurePrimaryHttpMessageHandler(() =>
 				new HttpClientHandler { AutomaticDecompression = System.Net.DecompressionMethods.All, });
