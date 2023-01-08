@@ -1,0 +1,85 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+		<AssemblyName>AlphaVantage</AssemblyName>
+		<RootNamespace>AlphaVantage</RootNamespace>
+	</PropertyGroup>
+
+	<PropertyGroup Label="NuGet">
+		<Title>AlphaVantage.Net</Title>
+		<Description>A client api for alphavantage.co stock information service.</Description>
+
+		<Authors>viceroypenguin</Authors>
+		<PackageTags>alphavantage api</PackageTags>
+
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<RepositoryUrl>https://github.com/viceroypenguin/AlphaVantage.Net</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<Copyright>
+			Copyright © 2023 Turning Code, LLC
+		</Copyright>
+		<Copyright>$([System.Text.RegularExpressions.Regex]::Replace($(Copyright), `\s+`, ` `).Trim())</Copyright>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="..\..\readme.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="7.0.0" />
+		<PackageReference Include="System.Text.Json" Version="7.0.1" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+		<PackageReference Include="System.Text.Json" Version="6.0.7" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.32" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.32" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="3.1.32" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.32" />
+		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+		<PackageReference Include="System.Text.Json" Version="6.0.7" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
+		<PackageReference Include="MinVer" Version="4.2.0" PrivateAssets="All" />
+		<PackageReference Include="PolySharp" Version="1.8.1" PrivateAssets="All" />
+		<PackageReference Include="Refit" Version="6.3.2" />
+		<PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
+		<PackageReference Include="System.Threading.RateLimiting" Version="7.0.0" />
+	</ItemGroup>
+
+	<PropertyGroup Label="MinVer">
+		<MinVerAutoIncrement>minor</MinVerAutoIncrement>
+		<MinVerDefaultPreReleasePhase>preview</MinVerDefaultPreReleasePhase>
+		<MinVerTagPrefix>v</MinVerTagPrefix>
+	</PropertyGroup>
+
+</Project>
