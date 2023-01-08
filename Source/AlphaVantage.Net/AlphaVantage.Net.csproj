@@ -59,15 +59,6 @@
 		<PackageReference Include="System.Text.Json" Version="6.0.7" />
 	</ItemGroup>
 
-	<ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.1' ">
-		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.32" />
-		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.32" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="3.1.32" />
-		<PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.32" />
-		<PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
-		<PackageReference Include="System.Text.Json" Version="6.0.7" />
-	</ItemGroup>
-
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Diagnostics" Version="8.0.0" />
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
