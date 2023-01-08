@@ -1,5 +1,5 @@
 ﻿namespace AlphaVantage;
 
-internal interface IAlphaVantageApi
+internal partial interface IAlphaVantageApi
 {
 }

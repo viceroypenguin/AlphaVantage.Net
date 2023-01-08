@@ -1,8 +1,7 @@
-﻿using CommunityToolkit.Diagnostics;
-using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text.Json.Serialization;
+using CommunityToolkit.Diagnostics;
 using Microsoft.Extensions.Logging.Abstractions;
-using Microsoft.Extensions.Options;
-using Refit;
 
 namespace AlphaVantage;
 
@@ -12,7 +11,7 @@ namespace AlphaVantage;
 /// <remarks>
 /// This class is designed to be short-lived and transient, as a unit-of-work class.
 /// </remarks>
-[System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1001:Types that own disposable fields should be disposable", Justification = "_rateLimiter has a longer scope than AlphaVantageClient.")]
+[SuppressMessage("Design", "CA1001:Types that own disposable fields should be disposable", Justification = "_rateLimiter has a longer scope than AlphaVantageClient.")]
 public sealed partial class AlphaVantageClient
 {
 	private readonly RateLimiter _rateLimiter;

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace AlphaVantage;
+﻿namespace AlphaVantage;
 
 /// <summary>
 /// Implements the IOptions pattern for reading an 'AlphaVantage' section from an <see cref="IConfiguration"/> object.
