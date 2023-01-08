@@ -81,4 +81,13 @@ public sealed partial class AlphaVantageClient
 				new InvalidDecimalConverter(),
 			},
 		};
+
+	private async Task<TResponse> WrapJsonCall<TResponse>(Func<Task<TResponse>> apiCall, CancellationToken cancellationToken)
+	{
+		using var lease = await _rateLimiter.AcquireAsync(cancellationToken);
+		if (!lease.IsAcquired)
+			ThrowHelper.ThrowTimeoutException();
+
+		return await apiCall();
+	}
 }
