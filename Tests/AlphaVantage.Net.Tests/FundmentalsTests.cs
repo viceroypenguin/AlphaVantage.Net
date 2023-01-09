@@ -28,4 +28,13 @@ public class FundmentalsTests : IClassFixture<AlphaVantageFixture>
 			{
 				Symbol = "IBM",
 			});
+
+	[Fact]
+	public async Task VerifyBalanceSheet() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetBalanceSheet(
+			new()
+			{
+				Symbol = "IBM",
+			});
 }
