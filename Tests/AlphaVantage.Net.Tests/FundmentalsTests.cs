@@ -46,4 +46,13 @@ public class FundmentalsTests : IClassFixture<AlphaVantageFixture>
 			{
 				Symbol = "IBM",
 			});
+
+	[Fact]
+	public async Task VerifyEarnings() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetEarnings(
+			new()
+			{
+				Symbol = "IBM",
+			});
 }
