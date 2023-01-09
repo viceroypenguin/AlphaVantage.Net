@@ -77,4 +77,19 @@ public sealed partial class AlphaVantageClient
 	/// </remarks>
 	public Task<EarningsResponse> GetEarnings(EarningsRequest request, CancellationToken cancellationToken = default) =>
 		WrapJsonCall(() => _alphaVantageApi.GetEarnings(_apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
+	/// This API returns a list of active or delisted US stocks and ETFs, either as of the latest trading day or at a
+	/// specific time in history. The endpoint is positioned to facilitate equity research on asset lifecycle and
+	/// survivorship.
+	/// </summary>
+	/// <param name="request">The parameters for the Listing Status API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The requested list of active or delisted stocks and ETFs.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#listing-status"/>
+	/// </remarks>
+	public Task<IReadOnlyList<ListingStatusResponse>> GetListingStatus(ListingStatusRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<ListingStatusResponse>(() => _alphaVantageApi.GetListingStatus(_apiKey, request, cancellationToken), cancellationToken);
 }
