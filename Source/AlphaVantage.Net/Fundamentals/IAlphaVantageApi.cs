@@ -15,4 +15,7 @@ internal partial interface IAlphaVantageApi
 
 	[Get("/query?function=CASH_FLOW")]
 	Task<CashFlowResponse> GetCashFlow(string apikey, CashFlowRequest request, CancellationToken cancellationToken);
+
+	[Get("/query?function=EARNINGS")]
+	Task<EarningsResponse> GetEarnings(string apikey, EarningsRequest request, CancellationToken cancellationToken);
 }
