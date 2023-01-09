@@ -18,4 +18,7 @@ internal partial interface IAlphaVantageApi
 
 	[Get("/query?function=EARNINGS")]
 	Task<EarningsResponse> GetEarnings(string apikey, EarningsRequest request, CancellationToken cancellationToken);
+
+	[Get("/query?function=LISTING_STATUS")]
+	Task<Stream> GetListingStatus(string apikey, ListingStatusRequest request, CancellationToken cancellationToken);
 }

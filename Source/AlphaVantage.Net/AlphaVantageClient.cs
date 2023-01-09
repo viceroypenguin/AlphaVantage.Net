@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Text.Json.Serialization;
 using CommunityToolkit.Diagnostics;
+using CsvHelper;
 using Microsoft.Extensions.Logging.Abstractions;
 
 namespace AlphaVantage;
@@ -87,6 +89,22 @@ public sealed partial class AlphaVantageClient
 		if (!lease.IsAcquired)
 			ThrowHelper.ThrowTimeoutException();
 
-		return await apiCall();
+		return await apiCall().ConfigureAwait(false);
+	}
+
+	private async Task<IReadOnlyList<TResponse>> WrapCsvCall<TResponse>(Func<Task<Stream>> apiCall, CancellationToken cancellationToken)
+	{
+		using var lease = await _rateLimiter.AcquireAsync(cancellationToken);
+		if (!lease.IsAcquired)
+			ThrowHelper.ThrowTimeoutException();
+
+		using var stream = await apiCall().ConfigureAwait(false);
+		using var reader = new StreamReader(stream);
+		using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+
+		var list = new List<TResponse>();
+		await foreach (var i in csv.GetRecordsAsync<TResponse>(cancellationToken).ConfigureAwait(false))
+			list.Add(i);
+		return list;
 	}
 }

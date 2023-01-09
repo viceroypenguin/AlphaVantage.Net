@@ -55,4 +55,14 @@ public class FundmentalsTests : IClassFixture<AlphaVantageFixture>
 			{
 				Symbol = "IBM",
 			});
+
+	[Fact]
+	public async Task VerifyListingStatusDefault() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetListingStatus(new());
+
+	[Fact]
+	public async Task VerifyListingStatusParameters() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetListingStatus(new() { Date = new DateOnly(2022, 01, 01), State = Fundamentals.ListingStatus.Delisted, });
 }
