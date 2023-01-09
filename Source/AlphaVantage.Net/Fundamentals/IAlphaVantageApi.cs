@@ -12,4 +12,7 @@ internal partial interface IAlphaVantageApi
 
 	[Get("/query?function=BALANCE_SHEET")]
 	Task<BalanceSheetResponse> GetBalanceSheet(string apikey, BalanceSheetRequest request, CancellationToken cancellationToken);
+
+	[Get("/query?function=CASH_FLOW")]
+	Task<CashFlowResponse> GetCashFlow(string apikey, CashFlowRequest request, CancellationToken cancellationToken);
 }
