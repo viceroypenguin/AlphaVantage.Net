@@ -12,6 +12,44 @@ public class StocksTests : IClassFixture<AlphaVantageFixture>
 	}
 
 	[Fact]
+	public async Task VerifyDailyTimeSeriesDefault() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetDailyTimeSeries(
+			new()
+			{
+				Symbol = "IBM",
+			});
+
+	[Fact]
+	public async Task VerifyDailyTimeSeriesOutputSize() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetDailyTimeSeries(
+			new()
+			{
+				Symbol = "IBM",
+				OutputSize = Stocks.TimeSeriesOutputSize.Full,
+			});
+
+	[Fact]
+	public async Task VerifyDailyAdjustedTimeSeriesDefault() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetDailyAdjustedTimeSeries(
+			new()
+			{
+				Symbol = "IBM",
+			});
+
+	[Fact]
+	public async Task VerifyDailyAdjustedTimeSeriesOutputSize() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetDailyAdjustedTimeSeries(
+			new()
+			{
+				Symbol = "IBM",
+				OutputSize = Stocks.TimeSeriesOutputSize.Full,
+			});
+
+	[Fact]
 	public async Task VerifyWeeklyTimeSeries() =>
 		// all we're looking for is successful api query
 		await _fixture.Client.GetWeeklyTimeSeries(
