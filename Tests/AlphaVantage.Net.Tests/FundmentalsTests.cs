@@ -85,4 +85,9 @@ public class FundmentalsTests : IClassFixture<AlphaVantageFixture>
 				Horizon = Fundamentals.EarningsCalendarHorizon.TwelveMonths,
 				Symbol = "IBM",
 			});
+
+	[Fact]
+	public async Task VerifyIpoCalendar() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetIpoCalendar(new());
 }

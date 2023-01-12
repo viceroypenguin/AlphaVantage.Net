@@ -99,10 +99,23 @@ public sealed partial class AlphaVantageClient
 	/// <param name="request">The parameters for the Earnings Calendar API call</param>
 	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
 	/// time.</param>
-	/// <returns>The requested list earnings calls over the next 3, 6, or 12 months.</returns>
+	/// <returns>The requested list of earnings calls in the next 3, 6, or 12 months.</returns>
 	/// <remarks>
 	/// See also: <seealso href="https://www.alphavantage.co/documentation/#earnings-calendar"/>
 	/// </remarks>
 	public Task<IReadOnlyList<EarningsCalendarResponse>> GetEarningsCalendar(EarningsCalendarRequest request, CancellationToken cancellationToken = default) =>
 		WrapCsvCall<EarningsCalendarResponse>(() => _alphaVantageApi.GetEarningsCalendar(_apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
+	/// This API returns a list of IPOs expected in the next 3 months.
+	/// </summary>
+	/// <param name="request">The parameters for the Earnings Calendar API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The requested list of IPOs expected in the next 3.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#ipo-calendar"/>
+	/// </remarks>
+	public Task<IReadOnlyList<IpoCalendarResponse>> GetIpoCalendar(IpoCalendarRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<IpoCalendarResponse>(() => _alphaVantageApi.GetIpoCalendar(_apiKey, request, cancellationToken), cancellationToken);
 }

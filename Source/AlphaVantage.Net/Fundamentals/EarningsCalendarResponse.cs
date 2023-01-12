@@ -3,7 +3,7 @@
 namespace AlphaVantage;
 
 /// <summary>
-/// Information about a security from the Earnings Calendar api.
+/// Information about upcoming earnings from the Earnings Calendar api.
 /// </summary>
 public class EarningsCalendarResponse
 {
