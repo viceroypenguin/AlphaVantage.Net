@@ -64,5 +64,25 @@ public class FundmentalsTests : IClassFixture<AlphaVantageFixture>
 	[Fact]
 	public async Task VerifyListingStatusParameters() =>
 		// all we're looking for is successful api query
-		await _fixture.Client.GetListingStatus(new() { Date = new DateOnly(2022, 01, 01), State = Fundamentals.ListingStatus.Delisted, });
+		await _fixture.Client.GetListingStatus(
+			new()
+			{
+				Date = new DateOnly(2022, 01, 01),
+				State = Fundamentals.ListingStatus.Delisted,
+			});
+
+	[Fact]
+	public async Task VerifyEarningsCalendarDefault() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetEarningsCalendar(new());
+
+	[Fact]
+	public async Task VerifyEarningsCalendarParameters() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetEarningsCalendar(
+			new()
+			{
+				Horizon = Fundamentals.EarningsCalendarHorizon.TwelveMonths,
+				Symbol = "IBM",
+			});
 }

@@ -92,4 +92,17 @@ public sealed partial class AlphaVantageClient
 	/// </remarks>
 	public Task<IReadOnlyList<ListingStatusResponse>> GetListingStatus(ListingStatusRequest request, CancellationToken cancellationToken = default) =>
 		WrapCsvCall<ListingStatusResponse>(() => _alphaVantageApi.GetListingStatus(_apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
+	/// This API returns a list of company earnings expected in the next 3, 6, or 12 months.
+	/// </summary>
+	/// <param name="request">The parameters for the Earnings Calendar API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The requested list earnings calls over the next 3, 6, or 12 months.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#earnings-calendar"/>
+	/// </remarks>
+	public Task<IReadOnlyList<EarningsCalendarResponse>> GetEarningsCalendar(EarningsCalendarRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<EarningsCalendarResponse>(() => _alphaVantageApi.GetEarningsCalendar(_apiKey, request, cancellationToken), cancellationToken);
 }
