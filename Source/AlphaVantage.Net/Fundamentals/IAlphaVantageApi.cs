@@ -24,4 +24,7 @@ internal partial interface IAlphaVantageApi
 
 	[Get("/query?function=EARNINGS_CALENDAR")]
 	Task<Stream> GetEarningsCalendar(string apikey, EarningsCalendarRequest request, CancellationToken cancellationToken);
+
+	[Get("/query?function=IPO_CALENDAR")]
+	Task<Stream> GetIpoCalendar(string apikey, IpoCalendarRequest request, CancellationToken cancellationToken);
 }
