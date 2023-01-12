@@ -5,6 +5,46 @@ namespace AlphaVantage;
 public sealed partial class AlphaVantageClient
 {
 	/// <summary>
+	/// <para>
+	/// This API returns intraday time series of the equity specified, covering <u>extended trading hours</u> where
+	/// applicable (e.g., 4:00am to 8:00pm Eastern Time for the US market). The intraday data is derived from the
+	/// Securities Information Processor (SIP) market-aggregated data. You can query both raw (as-traded) and
+	/// split/dividend-adjusted intraday data from this endpoint.
+	/// </para>
+	/// <para>
+	/// This API returns the most recent 1-2 months of intraday data and is best suited for short-term/medium-term
+	/// charting and trading strategy development. If you are targeting a deeper intraday history, please use the
+	/// Extended Intraday API.
+	/// </para>
+	/// </summary>
+	/// <param name="request">The parameters for the Time Series API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The Intraday equity time series data.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#intraday"/>
+	/// </remarks>
+	public Task<IReadOnlyList<TimeSeriesResponse>> GetIntradayTimeSeries(IntradayTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_INTRADAY", _apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
+	/// This API returns historical intraday time series for the trailing 2 years, covering over 2 million data points
+	/// per ticker. The intraday data is derived from the Securities Information Processor (SIP) market-aggregated data.
+	/// You can query both raw (as-traded) and split/dividend-adjusted intraday data from this endpoint. Common use
+	/// cases for this API include data visualization, trading simulation/backtesting, and machine learning and deep
+	/// learning applications with a longer horizon.
+	/// </summary>
+	/// <param name="request">The parameters for the Time Series API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The Intraday equity time series data.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#intraday-extended"/>
+	/// </remarks>
+	public Task<IReadOnlyList<TimeSeriesResponse>> GetExtendedIntradayTimeSeries(ExtendedIntradayTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_INTRADAY_EXTENDED", _apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
 	/// This API returns <u>raw</u> (as-traded) daily time series (date, daily open, daily high, daily low, daily close,
 	/// daily volume) of the global equity specified, covering 20+ years of historical data. If you are also interested
 	/// in split/dividend-adjusted historical data, please use the <see

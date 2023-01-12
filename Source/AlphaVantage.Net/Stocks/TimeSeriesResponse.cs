@@ -8,8 +8,8 @@ namespace AlphaVantage.Stocks;
 public class TimeSeriesResponse
 {
 #pragma warning disable CS1591
-	[Name("timestamp")]
-	public required string Timestamp { get; set; }
+	[Name("timestamp", "time")]
+	public required DateTime Timestamp { get; set; }
 	[Name("open"), NullValues("", "null")]
 	public required decimal? Open { get; set; }
 	[Name("high"), NullValues("", "null")]
