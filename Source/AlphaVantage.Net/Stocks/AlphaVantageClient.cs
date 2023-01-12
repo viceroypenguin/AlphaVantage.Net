@@ -5,6 +5,37 @@ namespace AlphaVantage;
 public sealed partial class AlphaVantageClient
 {
 	/// <summary>
+	/// This API returns <u>raw</u> (as-traded) daily time series (date, daily open, daily high, daily low, daily close,
+	/// daily volume) of the global equity specified, covering 20+ years of historical data. If you are also interested
+	/// in split/dividend-adjusted historical data, please use the <see
+	/// cref="GetDailyAdjustedTimeSeries(DailyTimeSeriesRequest, CancellationToken)"/> API, which covers adjusted close
+	/// values and historical split and dividend events.
+	/// </summary>
+	/// <param name="request">The parameters for the Time Series API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The Daily equity time series data.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#daily"/>
+	/// </remarks>
+	public Task<IReadOnlyList<TimeSeriesResponse>> GetDailyTimeSeries(DailyTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_DAILY", _apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
+	/// This API returns raw (as-traded) daily open/high/low/close/volume values, daily adjusted close values, and
+	/// historical split/dividend events of the global equity specified, covering 20+ years of historical data.
+	/// </summary>
+	/// <param name="request">The parameters for the Time Series API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>The Daily adjusted equity time series data.</returns>
+	/// <remarks>
+	/// See also: <seealso href="https://www.alphavantage.co/documentation/#dailyadj"/>
+	/// </remarks>
+	public Task<IReadOnlyList<TimeSeriesResponse>> GetDailyAdjustedTimeSeries(DailyTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_DAILY_ADJUSTED", _apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
 	/// This API returns Weekly time series (last trading day of each month, Weekly open, Weekly high, Weekly low,
 	/// Weekly close, Weekly volume) of the global equity specified, covering 20+ years of historical data.
 	/// </summary>
