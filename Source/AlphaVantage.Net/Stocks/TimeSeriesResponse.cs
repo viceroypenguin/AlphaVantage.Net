@@ -19,6 +19,6 @@ public class TimeSeriesResponse
 	[Name("close"), NullValues("", "null")]
 	public required decimal? Close { get; set; }
 	[Name("volume"), NullValues("", "null")]
-	public required decimal? Volume { get; set; }
+	public required long? Volume { get; set; }
 #pragma warning restore CS1591
 }
