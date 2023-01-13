@@ -9,7 +9,7 @@ public class DailyAdjustedTimeSeriesResponse
 {
 #pragma warning disable CS1591
 	[Name("timestamp")]
-	public required string Timestamp { get; set; }
+	public required DateTime Timestamp { get; set; }
 	[Name("open"), NullValues("", "null")]
 	public required decimal? Open { get; set; }
 	[Name("high"), NullValues("", "null")]
@@ -21,7 +21,7 @@ public class DailyAdjustedTimeSeriesResponse
 	[Name("adjusted_close"), NullValues("", "null")]
 	public required decimal? AdjustedClose { get; set; }
 	[Name("volume"), NullValues("", "null")]
-	public required decimal? Volume { get; set; }
+	public required long? Volume { get; set; }
 	[Name("dividend_amount"), NullValues("", "null")]
 	public required decimal? DividendAmount { get; set; }
 	[Name("split_coefficient"), NullValues("", "null")]
