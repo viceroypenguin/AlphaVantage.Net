@@ -1,6 +1,4 @@
-﻿using System.Runtime.Serialization;
-
-namespace AlphaVantage.Fundamentals;
+﻿namespace AlphaVantage.Fundamentals;
 
 /// <summary>
 /// The parameters for <c>?function=IPO_CALENDAR</c> api.
@@ -8,6 +6,4 @@ namespace AlphaVantage.Fundamentals;
 /// <remarks>
 /// See also: <seealso href="https://www.alphavantage.co/documentation/#ipo-calendar"/>
 /// </remarks>
-public sealed class IpoCalendarRequest
-{
-}
+public sealed class IpoCalendarRequest { }

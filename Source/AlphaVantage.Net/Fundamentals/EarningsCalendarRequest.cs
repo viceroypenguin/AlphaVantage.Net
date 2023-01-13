@@ -15,6 +15,7 @@ public sealed class EarningsCalendarRequest
 	/// list of company earnings scheduled. If a symbol is set, the API endpoint will return the expected earnings for
 	/// that specific symbol. For example, <c><see cref="Symbol"/>=IBM</c>
 	/// </summary>
+	/// <remarks>This parameter is optional.</remarks>
 	public string? Symbol { get; set; }
 
 	/// <summary>
@@ -23,6 +24,7 @@ public sealed class EarningsCalendarRequest
 	/// cref="EarningsCalendarHorizon.SixMonths"/> or <see cref="EarningsCalendarHorizon.TwelveMonths"/> to query the
 	/// earnings scheduled for the next 6 months or 12 months, respectively.
 	/// </summary>
+	/// <remarks>This parameter is optional.</remarks>
 	public EarningsCalendarHorizon? Horizon { get; set; }
 }
 

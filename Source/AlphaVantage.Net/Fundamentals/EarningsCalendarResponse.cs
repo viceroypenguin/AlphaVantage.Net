@@ -1,6 +1,6 @@
 ﻿using CsvHelper.Configuration.Attributes;
 
-namespace AlphaVantage;
+namespace AlphaVantage.Fundamentals;
 
 /// <summary>
 /// Information about upcoming earnings from the Earnings Calendar api.
