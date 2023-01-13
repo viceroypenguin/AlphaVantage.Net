@@ -25,7 +25,7 @@ public sealed partial class AlphaVantageClient
 	/// See also: <seealso href="https://www.alphavantage.co/documentation/#intraday"/>
 	/// </remarks>
 	public Task<IReadOnlyList<TimeSeriesResponse>> GetIntradayTimeSeries(IntradayTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
-		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_INTRADAY", _apiKey, request, cancellationToken), cancellationToken);
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetIntradayTimeSeries(_apiKey, request, cancellationToken), cancellationToken);
 
 	/// <summary>
 	/// This API returns historical intraday time series for the trailing 2 years, covering over 2 million data points
@@ -42,7 +42,7 @@ public sealed partial class AlphaVantageClient
 	/// See also: <seealso href="https://www.alphavantage.co/documentation/#intraday-extended"/>
 	/// </remarks>
 	public Task<IReadOnlyList<TimeSeriesResponse>> GetExtendedIntradayTimeSeries(ExtendedIntradayTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
-		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_INTRADAY_EXTENDED", _apiKey, request, cancellationToken), cancellationToken);
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetExtendedIntradayTimeSeries(_apiKey, request, cancellationToken), cancellationToken);
 
 	/// <summary>
 	/// This API returns <u>raw</u> (as-traded) daily time series (date, daily open, daily high, daily low, daily close,
@@ -59,7 +59,7 @@ public sealed partial class AlphaVantageClient
 	/// See also: <seealso href="https://www.alphavantage.co/documentation/#daily"/>
 	/// </remarks>
 	public Task<IReadOnlyList<TimeSeriesResponse>> GetDailyTimeSeries(DailyTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
-		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_DAILY", _apiKey, request, cancellationToken), cancellationToken);
+		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetDailyTimeSeries("TIME_SERIES_DAILY", _apiKey, request, cancellationToken), cancellationToken);
 
 	/// <summary>
 	/// This API returns raw (as-traded) daily open/high/low/close/volume values, daily adjusted close values, and
@@ -72,8 +72,8 @@ public sealed partial class AlphaVantageClient
 	/// <remarks>
 	/// See also: <seealso href="https://www.alphavantage.co/documentation/#dailyadj"/>
 	/// </remarks>
-	public Task<IReadOnlyList<TimeSeriesResponse>> GetDailyAdjustedTimeSeries(DailyTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
-		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_DAILY_ADJUSTED", _apiKey, request, cancellationToken), cancellationToken);
+	public Task<IReadOnlyList<DailyAdjustedTimeSeriesResponse>> GetDailyAdjustedTimeSeries(DailyTimeSeriesRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<DailyAdjustedTimeSeriesResponse>(() => _alphaVantageApi.GetDailyTimeSeries("TIME_SERIES_DAILY_ADJUSTED", _apiKey, request, cancellationToken), cancellationToken);
 
 	/// <summary>
 	/// This API returns Weekly time series (last trading day of each month, Weekly open, Weekly high, Weekly low,
