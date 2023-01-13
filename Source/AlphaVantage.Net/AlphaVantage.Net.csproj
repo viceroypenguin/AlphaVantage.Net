@@ -6,6 +6,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup Label="NuGet">
+		<PackageId>AlphaVantage.Net</PackageId>
 		<Title>AlphaVantage.Net</Title>
 		<Description>A client api for alphavantage.co stock information service.</Description>
 
