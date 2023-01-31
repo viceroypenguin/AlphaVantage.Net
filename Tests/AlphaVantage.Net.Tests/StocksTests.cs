@@ -105,4 +105,13 @@ public class StocksTests : IClassFixture<AlphaVantageFixture>
 			{
 				Symbol = "IBM",
 			});
+
+	[Fact]
+	public async Task VerifySymbolSearch() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.SearchSymbols(
+			new()
+			{
+				Keyword = "IBM",
+			});
 }

@@ -133,4 +133,16 @@ public sealed partial class AlphaVantageClient
 	public Task<IReadOnlyList<TimeSeriesResponse>> GetMonthlyAdjustedTimeSeries(TimeSeriesRequest request, CancellationToken cancellationToken = default) =>
 		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_MONTHLY_ADJUSTED", _apiKey, request, cancellationToken), cancellationToken);
 
+	/// <summary>
+	/// The Search Endpoint returns the best-matching symbols and market information based on keywords of your choice.
+	/// The search results also contain match scores that provide you with the full flexibility to develop your own
+	/// search and filtering logic.
+	/// </summary>
+	/// <param name="request">The parameters for the Symbol Search API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>A list of matching symbols, information about each, and a matching score to help identify the
+	/// reliability of the match.</returns>
+	public Task<IReadOnlyList<SymbolSearchResponse>> SearchSymbols(SymbolSearchRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<SymbolSearchResponse>(() => _alphaVantageApi.SearchSymbol(_apiKey, request, cancellationToken), cancellationToken);
 }
