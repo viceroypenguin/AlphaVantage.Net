@@ -134,6 +134,16 @@ public sealed partial class AlphaVantageClient
 		WrapCsvCall<TimeSeriesResponse>(() => _alphaVantageApi.GetTimeSeries("TIME_SERIES_MONTHLY_ADJUSTED", _apiKey, request, cancellationToken), cancellationToken);
 
 	/// <summary>
+	/// A lightweight alternative to the time series APIs, this service returns the price and volume information for a token of your choice.
+	/// </summary>
+	/// <param name="request">The parameters for the Symbol Search API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>Current price information about the requested symbol.</returns>
+	public Task<IReadOnlyList<QuoteResponse>> GetQuote(QuoteRequest request, CancellationToken cancellationToken = default) =>
+		WrapCsvCall<QuoteResponse>(() => _alphaVantageApi.GetQuote(_apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
 	/// The Search Endpoint returns the best-matching symbols and market information based on keywords of your choice.
 	/// The search results also contain match scores that provide you with the full flexibility to develop your own
 	/// search and filtering logic.
