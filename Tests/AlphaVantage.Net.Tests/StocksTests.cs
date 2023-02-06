@@ -107,6 +107,15 @@ public class StocksTests : IClassFixture<AlphaVantageFixture>
 			});
 
 	[Fact]
+	public async Task VerifyQuote() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetQuote(
+			new()
+			{
+				Symbol = "IBM",
+			});
+
+	[Fact]
 	public async Task VerifySymbolSearch() =>
 		// all we're looking for is successful api query
 		await _fixture.Client.SearchSymbols(
