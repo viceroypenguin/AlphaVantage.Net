@@ -145,4 +145,14 @@ public sealed partial class AlphaVantageClient
 	/// reliability of the match.</returns>
 	public Task<IReadOnlyList<SymbolSearchResponse>> SearchSymbols(SymbolSearchRequest request, CancellationToken cancellationToken = default) =>
 		WrapCsvCall<SymbolSearchResponse>(() => _alphaVantageApi.SearchSymbol(_apiKey, request, cancellationToken), cancellationToken);
+
+	/// <summary>
+	/// This endpoint returns the current market status (open vs. closed) of major trading venues for equities, forex, and cryptocurrencies around the world.
+	/// </summary>
+	/// <param name="request">The parameters for the Symbol Search API call</param>
+	/// <param name="cancellationToken">The optional cancellation token to be used for cancelling the API call at any
+	/// time.</param>
+	/// <returns>Current market status about major trading venues.</returns>
+	public Task<MarketStatusResponse> GetMarketStatus(MarketStatusRequest request, CancellationToken cancellationToken = default) =>
+		WrapJsonCall(() => _alphaVantageApi.GetMarketStatus(_apiKey, request, cancellationToken), cancellationToken);
 }

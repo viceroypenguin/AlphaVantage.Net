@@ -18,4 +18,6 @@ internal partial interface IAlphaVantageApi
 
 	[Get("/query?function=SYMBOL_SEARCH&datatype=csv")]
 	Task<Stream> SearchSymbol(string apikey, SymbolSearchRequest request, CancellationToken cancellationToken);
+	[Get("/query?function=MARKET_STATUS&datatype=csv")]
+	Task<MarketStatusResponse> GetMarketStatus(string apikey, MarketStatusRequest request, CancellationToken cancellationToken);
 }
