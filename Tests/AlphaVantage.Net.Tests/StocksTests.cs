@@ -114,4 +114,9 @@ public class StocksTests : IClassFixture<AlphaVantageFixture>
 			{
 				Keyword = "IBM",
 			});
+
+	[Fact]
+	public async Task VerifyGetMarketStatus() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetMarketStatus(new());
 }
