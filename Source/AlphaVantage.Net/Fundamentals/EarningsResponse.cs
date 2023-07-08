@@ -21,7 +21,7 @@ public class AnnualEarnings
 {
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }
-	public required decimal? ReportedEPS { get; set; }
+	public decimal? ReportedEPS { get; set; }
 #pragma warning restore CS1591
 }
 
@@ -33,9 +33,9 @@ public class QuarterlyEarnings
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }
 	public required DateOnly ReportedDate { get; set; }
-	public required decimal? ReportedEPS { get; set; }
-	public required decimal? EstimatedEPS { get; set; }
-	public required decimal? Surprise { get; set; }
-	public required decimal? SurprisePercentage { get; set; }
+	public decimal? ReportedEPS { get; set; }
+	public decimal? EstimatedEPS { get; set; }
+	public decimal? Surprise { get; set; }
+	public decimal? SurprisePercentage { get; set; }
 #pragma warning restore CS1591
 }
