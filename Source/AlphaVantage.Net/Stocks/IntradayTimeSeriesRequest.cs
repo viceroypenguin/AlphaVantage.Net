@@ -39,6 +39,25 @@ public sealed class IntradayTimeSeriesRequest
 	/// <remarks>This parameter is optional.</remarks>
 	[AliasAs("adjusted")]
 	public bool? Adjusted { get; set; }
+
+	/// <summary>
+	/// By default, <c><see cref="ExtendedHours"/>=<see langword="true"/></c> and the output time series will include
+	/// both the regular trading hours and the extended trading hours (4:00am to 8:00pm Eastern Time for the US market).
+	/// Set <c><see cref="ExtendedHours"/>=<see langword="false"/></c> to query regular trading hours (9:30am to 16:00pm
+	/// US Eastern Time) only.
+	/// </summary>
+	/// <remarks>This parameter is optional.</remarks>
+	[AliasAs("extended_hours")]
+	public bool? ExtendedHours { get; set; }
+
+	/// <summary>
+	/// By default, this parameter is not set and the API will return intraday data for the most recent days of trading.
+	/// You can use the month parameter (in YYYY-MM format) to query a specific month in history. For example, <c><see
+	/// cref="Month"/>="2009-01"</c>. Any month since 2000-01 (January 2000) is supported.
+	/// </summary>
+	/// <remarks>This parameter is optional.</remarks>
+	[AliasAs("month")]
+	public string? Month { get; set; }
 }
 
 /// <summary>
