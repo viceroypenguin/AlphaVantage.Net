@@ -6,14 +6,6 @@
 public class AlphaVantageOptions
 {
 	/// <summary>
-	/// A default name in the IConfiguration that contains AlphaVantageOptions settings
-	/// </summary>
-	/// <remarks>
-	/// Section name in configuration is configurable. This default is offered for convenience only.
-	/// </remarks>
-	public const string SectionKey = "AlphaVantage";
-
-	/// <summary>
 	/// The API key provided by AlphaVantage.co for access to their APIs.
 	/// </summary>
 	/// <remarks>
