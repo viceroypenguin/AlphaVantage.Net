@@ -40,8 +40,8 @@ jobs:
       run: dotnet build -c Release --no-restore
     - name: Test
       env:
-        ALPHAVANTAGE__APIKEY: ${{ secrets.AlphaVantageApiKey }}
-        ALPHAVANTAGE__MAXAPICALLSPERMINUTE: 75
+        APIKEY: ${{ secrets.AlphaVantageApiKey }}
+        MAXAPICALLSPERMINUTE: 75
       run: dotnet test -c Release --no-build --verbosity normal
 
     - name: Upload coverage reports to Codecov with GitHub Action
