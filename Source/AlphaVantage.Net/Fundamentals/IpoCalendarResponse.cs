@@ -15,9 +15,9 @@ public class IpoCalendarResponse
 	[Name("ipoDate")]
 	public required DateOnly IpoDate { get; set; }
 	[Name("priceRangeLow"), NullValues("")]
-	public required decimal? PriceRangeLow { get; set; }
+	public decimal? PriceRangeLow { get; set; }
 	[Name("priceRangeHigh"), NullValues("")]
-	public required decimal? PriceRangeHigh { get; set; }
+	public decimal? PriceRangeHigh { get; set; }
 	[Name("currency")]
 	public required string Currency { get; set; }
 	[Name("exchange")]

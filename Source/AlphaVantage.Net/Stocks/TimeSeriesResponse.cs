@@ -12,14 +12,14 @@ public class TimeSeriesResponse
 	[Name("timestamp", "time")]
 	public required DateTime Timestamp { get; set; }
 	[Name("open"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? Open { get; set; }
+	public decimal? Open { get; set; }
 	[Name("high"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? High { get; set; }
+	public decimal? High { get; set; }
 	[Name("low"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? Low { get; set; }
+	public decimal? Low { get; set; }
 	[Name("close"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? Close { get; set; }
+	public decimal? Close { get; set; }
 	[Name("volume"), NullValues("", "null")]
-	public required long? Volume { get; set; }
+	public long? Volume { get; set; }
 #pragma warning restore CS1591
 }
