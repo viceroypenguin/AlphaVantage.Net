@@ -19,7 +19,7 @@ public class ListingStatusResponse
 	[Name("ipoDate")]
 	public required DateOnly IpoDate { get; set; }
 	[Name("delistingDate"), NullValues("null")]
-	public required DateOnly? DelistingDate { get; set; }
+	public DateOnly? DelistingDate { get; set; }
 	[Name("status")]
 	public required string Status { get; set; }
 #pragma warning restore CS1591

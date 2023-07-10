@@ -17,7 +17,7 @@ public class EarningsCalendarResponse
 	[Name("fiscalDateEnding")]
 	public required DateOnly FiscalDateEnding { get; set; }
 	[Name("estimate"), NullValues("")]
-	public required decimal? Estimate { get; set; }
+	public decimal? Estimate { get; set; }
 	[Name("currency")]
 	public required string Currency { get; set; }
 #pragma warning restore CS1591
