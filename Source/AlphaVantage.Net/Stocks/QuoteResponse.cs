@@ -14,21 +14,21 @@ public class QuoteResponse
 	[Name("symbol")]
 	public required string Symbol { get; set; }
 	[Name("open"), NullValues("", "null")]
-	public required decimal? Open { get; set; }
+	public decimal? Open { get; set; }
 	[Name("high"), NullValues("", "null")]
-	public required decimal? High { get; set; }
+	public decimal? High { get; set; }
 	[Name("low"), NullValues("", "null")]
-	public required decimal? Low { get; set; }
+	public decimal? Low { get; set; }
 	[Name("volume"), NullValues("", "null")]
-	public required long? Volume { get; set; }
+	public long? Volume { get; set; }
 	[Name("latestDay"), NullValues("", "null")]
-	public required DateOnly? LatestDay { get; set; }
+	public DateOnly? LatestDay { get; set; }
 	[Name("previousClose"), NullValues("", "null")]
-	public required decimal? PreviousClose { get; set; }
+	public decimal? PreviousClose { get; set; }
 	[Name("change"), NullValues("", "null")]
-	public required decimal? Change { get; set; }
+	public decimal? Change { get; set; }
 	[Name("changePercent"), NullValues("", "null"), TypeConverter(typeof(PercentConverter))]
-	public required decimal? ChangePercent { get; set; }
+	public decimal? ChangePercent { get; set; }
 
 	private class PercentConverter : ITypeConverter
 	{

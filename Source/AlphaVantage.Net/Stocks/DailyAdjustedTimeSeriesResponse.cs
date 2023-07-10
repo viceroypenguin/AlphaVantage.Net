@@ -12,20 +12,20 @@ public class DailyAdjustedTimeSeriesResponse
 	[Name("timestamp")]
 	public required DateTime Timestamp { get; set; }
 	[Name("open"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? Open { get; set; }
+	public decimal? Open { get; set; }
 	[Name("high"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? High { get; set; }
+	public decimal? High { get; set; }
 	[Name("low"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? Low { get; set; }
+	public decimal? Low { get; set; }
 	[Name("close"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? Close { get; set; }
+	public decimal? Close { get; set; }
 	[Name("adjusted_close"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? AdjustedClose { get; set; }
+	public decimal? AdjustedClose { get; set; }
 	[Name("volume"), NullValues("", "null")]
-	public required long? Volume { get; set; }
+	public long? Volume { get; set; }
 	[Name("dividend_amount"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? DividendAmount { get; set; }
+	public decimal? DividendAmount { get; set; }
 	[Name("split_coefficient"), NullValues("", "null"), NumberStyles(NumberStyles.Float)]
-	public required decimal? SplitCoefficient { get; set; }
+	public decimal? SplitCoefficient { get; set; }
 #pragma warning restore CS1591
 }

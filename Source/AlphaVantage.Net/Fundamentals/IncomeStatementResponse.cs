@@ -20,29 +20,29 @@ public class IncomeStatementReport
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }
 	public required string ReportedCurrency { get; set; }
-	public required decimal? GrossProfit { get; set; }
-	public required decimal? TotalRevenue { get; set; }
-	public required decimal? CostOfRevenue { get; set; }
-	public required decimal? CostofGoodsAndServicesSold { get; set; }
-	public required decimal? OperatingIncome { get; set; }
-	public required decimal? SellingGeneralAndAdministrative { get; set; }
-	public required decimal? ResearchAndDevelopment { get; set; }
-	public required decimal? OperatingExpenses { get; set; }
-	public required decimal? InvestmentIncomeNet { get; set; }
-	public required decimal? NetInterestIncome { get; set; }
-	public required decimal? InterestIncome { get; set; }
-	public required decimal? InterestExpense { get; set; }
-	public required decimal? NonInterestIncome { get; set; }
-	public required decimal? OtherNonOperatingIncome { get; set; }
-	public required decimal? Depreciation { get; set; }
-	public required decimal? DepreciationAndAmortization { get; set; }
-	public required decimal? IncomeBeforeTax { get; set; }
-	public required decimal? IncomeTaxExpense { get; set; }
-	public required decimal? InterestAndDebtExpense { get; set; }
-	public required decimal? NetIncomeFromContinuingOperations { get; set; }
-	public required decimal? ComprehensiveIncomeNetOfTax { get; set; }
-	public required decimal? Ebit { get; set; }
-	public required decimal? Ebitda { get; set; }
-	public required decimal? NetIncome { get; set; }
+	public decimal? GrossProfit { get; set; }
+	public decimal? TotalRevenue { get; set; }
+	public decimal? CostOfRevenue { get; set; }
+	public decimal? CostofGoodsAndServicesSold { get; set; }
+	public decimal? OperatingIncome { get; set; }
+	public decimal? SellingGeneralAndAdministrative { get; set; }
+	public decimal? ResearchAndDevelopment { get; set; }
+	public decimal? OperatingExpenses { get; set; }
+	public decimal? InvestmentIncomeNet { get; set; }
+	public decimal? NetInterestIncome { get; set; }
+	public decimal? InterestIncome { get; set; }
+	public decimal? InterestExpense { get; set; }
+	public decimal? NonInterestIncome { get; set; }
+	public decimal? OtherNonOperatingIncome { get; set; }
+	public decimal? Depreciation { get; set; }
+	public decimal? DepreciationAndAmortization { get; set; }
+	public decimal? IncomeBeforeTax { get; set; }
+	public decimal? IncomeTaxExpense { get; set; }
+	public decimal? InterestAndDebtExpense { get; set; }
+	public decimal? NetIncomeFromContinuingOperations { get; set; }
+	public decimal? ComprehensiveIncomeNetOfTax { get; set; }
+	public decimal? Ebit { get; set; }
+	public decimal? Ebitda { get; set; }
+	public decimal? NetIncome { get; set; }
 #pragma warning restore CS1591
 }
