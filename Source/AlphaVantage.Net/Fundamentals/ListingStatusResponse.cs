@@ -5,7 +5,7 @@ namespace AlphaVantage.Fundamentals;
 /// <summary>
 /// Information about a security from the Listing Status api.
 /// </summary>
-public class ListingStatusResponse
+public sealed class ListingStatusResponse
 {
 #pragma warning disable CS1591
 	[Name("symbol")]

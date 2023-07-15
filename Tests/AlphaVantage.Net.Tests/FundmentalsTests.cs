@@ -2,7 +2,7 @@
 
 namespace AlphaVantage.Tests;
 
-public class FundmentalsTests : IClassFixture<AlphaVantageFixture>
+public sealed class FundmentalsTests : IClassFixture<AlphaVantageFixture>
 {
 	private readonly AlphaVantageFixture _fixture;
 

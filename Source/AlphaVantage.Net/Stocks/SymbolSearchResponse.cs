@@ -5,7 +5,7 @@ namespace AlphaVantage.Stocks;
 /// <summary>
 /// Information about symbols found by the symbol search api
 /// </summary>
-public class SymbolSearchResponse
+public sealed class SymbolSearchResponse
 {
 #pragma warning disable CS1591
 	[Name("symbol")]

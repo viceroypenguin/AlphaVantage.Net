@@ -5,7 +5,7 @@ namespace AlphaVantage.Fundamentals;
 /// <summary>
 /// Information about upcoming IPOs from the IPO Calendar api.
 /// </summary>
-public class IpoCalendarResponse
+public sealed class IpoCalendarResponse
 {
 #pragma warning disable CS1591
 	[Name("symbol")]

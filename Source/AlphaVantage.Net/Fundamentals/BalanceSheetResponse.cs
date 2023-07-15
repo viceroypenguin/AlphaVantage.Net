@@ -3,7 +3,7 @@
 /// <summary>
 /// Annual and Quarterly Balance Sheet reports for an equity
 /// </summary>
-public class BalanceSheetResponse
+public sealed class BalanceSheetResponse
 {
 #pragma warning disable CS1591
 	public required string Symbol { get; set; }
@@ -15,7 +15,7 @@ public class BalanceSheetResponse
 /// <summary>
 /// Details from a Balance Sheet report for an equity
 /// </summary>
-public class BalanceSheetReport
+public sealed class BalanceSheetReport
 {
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }

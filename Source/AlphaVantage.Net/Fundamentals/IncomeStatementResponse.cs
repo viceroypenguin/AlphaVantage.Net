@@ -3,7 +3,7 @@
 /// <summary>
 /// Annual and Quarterly Income Statement reports for an equity
 /// </summary>
-public class IncomeStatementResponse
+public sealed class IncomeStatementResponse
 {
 #pragma warning disable CS1591
 	public required string Symbol { get; set; }
@@ -15,7 +15,7 @@ public class IncomeStatementResponse
 /// <summary>
 /// Details from an Income Statement report for an equity
 /// </summary>
-public class IncomeStatementReport
+public sealed class IncomeStatementReport
 {
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }

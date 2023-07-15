@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AlphaVantage.Tests;
 
-public class AlphaVantageFixture
+public sealed class AlphaVantageFixture
 {
 	private readonly ServiceProvider _serviceProvider;
 

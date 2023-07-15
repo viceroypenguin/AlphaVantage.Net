@@ -8,7 +8,7 @@ namespace AlphaVantage;
 /// <summary>
 /// Latest price information about a symbol
 /// </summary>
-public class QuoteResponse
+public sealed class QuoteResponse
 {
 #pragma warning disable CS1591
 	[Name("symbol")]
@@ -30,7 +30,8 @@ public class QuoteResponse
 	[Name("changePercent"), NullValues("", "null"), TypeConverter(typeof(PercentConverter))]
 	public decimal? ChangePercent { get; set; }
 
-	private class PercentConverter : ITypeConverter
+#pragma warning disable CA1812 // Avoid uninstantiated internal classes
+	private sealed class PercentConverter : ITypeConverter
 	{
 		public object? ConvertFromString(string? text, IReaderRow row, MemberMapData memberMapData) =>
 			decimal.TryParse(text?.Replace("%", "", StringComparison.Ordinal), out var d) ? d : null;
@@ -38,5 +39,6 @@ public class QuoteResponse
 		public string? ConvertToString(object? value, IWriterRow row, MemberMapData memberMapData) =>
 			throw new NotImplementedException();
 	}
+#pragma warning restore CA1812
 #pragma warning restore CS1591
 }

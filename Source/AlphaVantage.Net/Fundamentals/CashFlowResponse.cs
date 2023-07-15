@@ -3,7 +3,7 @@
 /// <summary>
 /// Annual and Quarterly Cash Flow reports for an equity
 /// </summary>
-public class CashFlowResponse
+public sealed class CashFlowResponse
 {
 #pragma warning disable CS1591
 	public required string Symbol { get; set; }
@@ -15,7 +15,7 @@ public class CashFlowResponse
 /// <summary>
 /// Details from a Cash Flow report for an equity
 /// </summary>
-public class CashFlowReport
+public sealed class CashFlowReport
 {
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }

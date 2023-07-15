@@ -4,7 +4,7 @@
 /// Represents errors that occur during AlphaVantage API calls
 /// </summary>
 #pragma warning disable CA1032 // AlphaVantageException should only be thrown by AlphaVantage.Net code
-public class AlphaVantageException : Exception
+public sealed class AlphaVantageException : Exception
 {
 	/// <summary>
 	/// The raw JSON returned by the server.

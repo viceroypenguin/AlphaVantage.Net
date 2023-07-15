@@ -17,7 +17,7 @@ public sealed class EarningsResponse
 /// <summary>
 /// Annual earnings information for an equity
 /// </summary>
-public class AnnualEarnings
+public sealed class AnnualEarnings
 {
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }
@@ -28,7 +28,7 @@ public class AnnualEarnings
 /// <summary>
 /// Quarterly earnings information for an equity
 /// </summary>
-public class QuarterlyEarnings
+public sealed class QuarterlyEarnings
 {
 #pragma warning disable CS1591
 	public required DateOnly FiscalDateEnding { get; set; }

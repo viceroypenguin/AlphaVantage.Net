@@ -5,7 +5,7 @@ namespace AlphaVantage.Stocks;
 /// <summary>
 /// Current Status information about various Stock Markets
 /// </summary>
-public class MarketStatusResponse
+public sealed class MarketStatusResponse
 {
 #pragma warning disable CS1591
 	public required string Endpoint { get; set; }
@@ -16,7 +16,7 @@ public class MarketStatusResponse
 /// <summary>
 /// Current Status information about a stock market
 /// </summary>
-public class MarketStatus
+public sealed class MarketStatus
 {
 #pragma warning disable CS1591
 	[JsonPropertyName("market_type")]

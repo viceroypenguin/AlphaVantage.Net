@@ -3,7 +3,7 @@
 /// <summary>
 /// Implements the IOptions pattern for reading an 'AlphaVantage' section from an <see cref="IConfiguration"/> object.
 /// </summary>
-public class AlphaVantageOptions
+public sealed class AlphaVantageOptions
 {
 	/// <summary>
 	/// The API key provided by AlphaVantage.co for access to their APIs.

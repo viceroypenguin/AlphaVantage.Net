@@ -6,7 +6,7 @@ namespace AlphaVantage.Stocks;
 /// <summary>
 /// Equity Data about a period in a time series.
 /// </summary>
-public class TimeSeriesResponse
+public sealed class TimeSeriesResponse
 {
 #pragma warning disable CS1591
 	[Name("timestamp", "time")]

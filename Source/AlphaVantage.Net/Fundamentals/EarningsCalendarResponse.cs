@@ -5,7 +5,7 @@ namespace AlphaVantage.Fundamentals;
 /// <summary>
 /// Information about upcoming earnings from the Earnings Calendar api.
 /// </summary>
-public class EarningsCalendarResponse
+public sealed class EarningsCalendarResponse
 {
 #pragma warning disable CS1591
 	[Name("symbol")]
