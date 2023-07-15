@@ -100,6 +100,15 @@ public sealed partial class AlphaVantageClient
 
 		using var stream = await apiCall().ConfigureAwait(false);
 		using var reader = new StreamReader(stream);
+
+		if (reader.Peek() == '{')
+		{
+			var str = await reader.ReadToEndAsync();
+			var json = JsonSerializer.Deserialize<JsonElement>(str);
+			var error = json.GetProperty("Error Message").GetString()!;
+			throw new AlphaVantageException(error, str);
+		}
+
 		using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
 
 		var list = new List<TResponse>();
