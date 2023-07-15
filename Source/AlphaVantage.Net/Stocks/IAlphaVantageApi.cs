@@ -13,14 +13,12 @@ internal partial interface IAlphaVantageApi
 	[Get("/query?function=TIME_SERIES_INTRADAY&datatype=csv")]
 	Task<Stream> GetIntradayTimeSeries(string apikey, IntradayTimeSeriesRequest request, CancellationToken cancellationToken);
 
-	[Get("/query?function=TIME_SERIES_INTRADAY_EXTENDED")]
-	Task<Stream> GetExtendedIntradayTimeSeries(string apikey, ExtendedIntradayTimeSeriesRequest request, CancellationToken cancellationToken);
-
 	[Get("/query?function=GLOBAL_QUOTE&datatype=csv")]
 	Task<Stream> GetQuote(string apikey, QuoteRequest request, CancellationToken cancellationToken);
 
 	[Get("/query?function=SYMBOL_SEARCH&datatype=csv")]
 	Task<Stream> SearchSymbol(string apikey, SymbolSearchRequest request, CancellationToken cancellationToken);
+
 	[Get("/query?function=MARKET_STATUS&datatype=csv")]
 	Task<MarketStatusResponse> GetMarketStatus(string apikey, MarketStatusRequest request, CancellationToken cancellationToken);
 }
