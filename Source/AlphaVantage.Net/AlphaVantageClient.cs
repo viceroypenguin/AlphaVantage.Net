@@ -70,6 +70,11 @@ public sealed partial class AlphaVantageClient
 		_logger = logger ?? NullLogger<AlphaVantageClient>.Instance;
 	}
 
+	/// <summary>
+	/// The configured maximum number of api calls to make per minute.
+	/// </summary>
+	public int MaxApiCallsPerMinute => _rateLimiter.MaxCallsPerMinute;
+
 	internal static readonly JsonSerializerOptions JsonSerializerOptions =
 		new()
 		{

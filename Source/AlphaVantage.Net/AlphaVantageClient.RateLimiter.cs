@@ -10,6 +10,7 @@ public sealed partial class AlphaVantageClient
 
 		public RateLimiter(int maxCallsPerMinute)
 		{
+			MaxCallsPerMinute = maxCallsPerMinute;
 			_limiter = new SlidingWindowRateLimiter(
 				new()
 				{
@@ -20,6 +21,8 @@ public sealed partial class AlphaVantageClient
 					SegmentsPerWindow = 5,
 				});
 		}
+
+		public int MaxCallsPerMinute { get; }
 
 		public ValueTask<RateLimitLease> AcquireAsync(CancellationToken cancellationToken) =>
 			_limiter.AcquireAsync(1, cancellationToken);
