@@ -9,21 +9,35 @@ namespace Microsoft.Extensions.DependencyInjection;
 public static class AlphaVantageServiceCollectionExtensions
 {
 	/// <summary>
-	/// Registers the <see cref="AlphaVantageClient"/> infrastructure, using the data in the provided <see
-	/// cref="IConfiguration"/> configuration section.
+	/// Registers the <see cref="AlphaVantageClient"/> infrastructure, using the data in the <c>AlphaVantageOptions</c>
+	/// section of the system configuration.
 	/// </summary>
 	/// <param name="services">The <see cref="IServiceCollection"/> to add the services to</param>
-	/// <param name="configuration">The configuration section that holds configuration</param>
+	/// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained</returns>
+	/// <remarks>
+	/// <para>Extracts configuration from the section titled <c>AlphaVantageOptions</c></para>
+	/// </remarks>
+	public static IServiceCollection AddAlphaVantageClient(this IServiceCollection services) =>
+		services.AddAlphaVantageClient(nameof(AlphaVantageOptions));
+
+	/// <summary>
+	/// Registers the <see cref="AlphaVantageClient"/> infrastructure, using the data in the <paramref name="sectionPath"/>
+	/// section of the system configuration.
+	/// </summary>
+	/// <param name="services">The <see cref="IServiceCollection"/> to add the services to</param>
+	/// <param name="sectionPath">The path to the </param>
 	/// <returns>The <see cref="IServiceCollection"/> so that additional calls can be chained</returns>
 	public static IServiceCollection AddAlphaVantageClient(
 		this IServiceCollection services,
-		IConfiguration configuration)
+		string sectionPath)
 	{
 		Guard.IsNotNull(services);
-		Guard.IsNotNull(configuration);
+		Guard.IsNotNull(sectionPath);
 
-		services.Configure<AlphaVantageOptions>(configuration);
-		services.AddAlphaVantageClient();
+		services
+			.AddOptions<AlphaVantageOptions>()
+			.BindConfiguration(sectionPath);
+		services.DoAddAlphaVantageClient();
 
 		return services;
 	}
@@ -43,12 +57,12 @@ public static class AlphaVantageServiceCollectionExtensions
 		Guard.IsNotNull(configureOptions);
 
 		services.Configure(configureOptions);
-		services.AddAlphaVantageClient();
+		services.DoAddAlphaVantageClient();
 
 		return services;
 	}
 
-	private static void AddAlphaVantageClient(this IServiceCollection services)
+	private static void DoAddAlphaVantageClient(this IServiceCollection services)
 	{
 		services.PostConfigure<AlphaVantageOptions>(o =>
 		{

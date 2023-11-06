@@ -17,7 +17,8 @@ public sealed class AlphaVantageFixture
 			.Build();
 
 		var services = new ServiceCollection();
-		services.AddAlphaVantageClient(configuration);
+		services.AddSingleton<IConfiguration>(_ => configuration);
+		services.AddAlphaVantageClient();
 
 		_serviceProvider = services.BuildServiceProvider();
 		Client = _serviceProvider.GetRequiredService<AlphaVantageClient>();
