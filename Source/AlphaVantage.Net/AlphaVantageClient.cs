@@ -85,6 +85,7 @@ public sealed partial class AlphaVantageClient
 			{
 				new InvalidDateOnlyConverter(),
 				new InvalidDecimalConverter(),
+				new EnumConverterFactory(),
 			},
 		};
 
