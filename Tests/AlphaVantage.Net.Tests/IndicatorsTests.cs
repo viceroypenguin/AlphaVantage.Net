@@ -19,4 +19,12 @@ public sealed class IndicatorsTests : IClassFixture<AlphaVantageFixture>
 			{
 				Interval = Indicators.GdpInterval.Quarterly
 			});
+
+	[Fact]
+	public async Task VerifyRealGdpPerCapita() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetRealGdpPerCapita(
+			new()
+			{
+			});
 }
