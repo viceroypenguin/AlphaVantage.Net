@@ -27,4 +27,14 @@ public sealed class IndicatorsTests : IClassFixture<AlphaVantageFixture>
 			new()
 			{
 			});
+
+	[Fact]
+	public async Task VerifyTreasuryYield() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetTreasuryYield(
+			new()
+			{
+				Interval = Indicators.TreasuryYieldInterval.Monthly,
+				Maturity = Indicators.TreasuryYieldMaturity.TenYear,
+			});
 }
