@@ -24,9 +24,7 @@ public sealed class IndicatorsTests : IClassFixture<AlphaVantageFixture>
 	public async Task VerifyRealGdpPerCapita() =>
 		// all we're looking for is successful api query
 		await _fixture.Client.GetRealGdpPerCapita(
-			new()
-			{
-			});
+			new());
 
 	[Fact]
 	public async Task VerifyTreasuryYield() =>
@@ -46,4 +44,43 @@ public sealed class IndicatorsTests : IClassFixture<AlphaVantageFixture>
 			{
 				Interval = Indicators.FederalFundsRateInterval.Monthly,
 			});
+
+	[Fact]
+	public async Task VerifyCpi() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetCpi(
+			new()
+			{
+				Interval = Indicators.CpiInterval.SemiAnnual
+			});
+
+	[Fact]
+	public async Task VerifyInflation() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetInflation(
+			new());
+
+	[Fact]
+	public async Task VerifyRetailSales() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetRetailSales(
+			new());
+
+	[Fact]
+	public async Task VerifyDurables() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetDurables(
+			new());
+
+	[Fact]
+	public async Task VerifyUnemployment() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetUnemployment(
+			new());
+
+	[Fact]
+	public async Task VerifyNonfarmPayroll() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetNonfarmPayroll(
+			new());
 }
