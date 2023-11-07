@@ -37,4 +37,13 @@ public sealed class IndicatorsTests : IClassFixture<AlphaVantageFixture>
 				Interval = Indicators.TreasuryYieldInterval.Monthly,
 				Maturity = Indicators.TreasuryYieldMaturity.TenYear,
 			});
+
+	[Fact]
+	public async Task VerifyFederalFundsRate() =>
+		// all we're looking for is successful api query
+		await _fixture.Client.GetFederalFundsRate(
+			new()
+			{
+				Interval = Indicators.FederalFundsRateInterval.Monthly,
+			});
 }

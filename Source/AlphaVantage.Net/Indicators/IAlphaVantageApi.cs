@@ -12,4 +12,7 @@ internal partial interface IAlphaVantageApi
 
 	[Get("/query?function=TREASURY_YIELD")]
 	Task<IndicatorResponse> GetTreasuryYield(string apikey, TreasuryYieldRequest request, CancellationToken cancellationToken);
+
+	[Get("/query?function=FEDERAL_FUNDS_RATE")]
+	Task<IndicatorResponse> GetFederalFundsRate(string apikey, FederalFundsRateRequest request, CancellationToken cancellationToken);
 }
