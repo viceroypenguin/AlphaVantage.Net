@@ -7,7 +7,6 @@
 
 		<ImplicitUsings>enable</ImplicitUsings>
 
-		<TargetFrameworks>net6.0;net7.0</TargetFrameworks>
 		<AnalysisLevel>latest-all</AnalysisLevel>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	</PropertyGroup>
