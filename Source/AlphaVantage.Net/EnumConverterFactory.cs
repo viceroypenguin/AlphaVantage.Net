@@ -47,7 +47,9 @@ internal sealed class EnumConverterFactory : JsonConverterFactory
 	{
 		if (Enum.TryParse<T>(text, out var e)
 			|| Enum.TryParse(text, ignoreCase: true, out e))
+		{
 			return e;
+		}
 
 		foreach (var value in typeof(T).GetFields(BindingFlags.Public | BindingFlags.Static))
 		{
@@ -59,7 +61,7 @@ internal sealed class EnumConverterFactory : JsonConverterFactory
 		return ThrowHelper.ThrowInvalidOperationException<T>("Unknown enum value.");
 	}
 
-	private Dictionary<Type, JsonConverter> _converters = new();
+	private Dictionary<Type, JsonConverter> _converters = [];
 
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1812:Avoid uninstantiated internal classes", Justification = "Activated on L28")]
 	internal sealed class EnumMemberEnumConverterNotNull<T> : JsonConverter<T>

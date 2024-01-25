@@ -34,7 +34,7 @@ public static class AlphaVantageServiceCollectionExtensions
 		Guard.IsNotNull(services);
 		Guard.IsNotNull(sectionPath);
 
-		services
+		_ = services
 			.AddOptions<AlphaVantageOptions>()
 			.BindConfiguration(sectionPath);
 		services.DoAddAlphaVantageClient();
@@ -56,7 +56,7 @@ public static class AlphaVantageServiceCollectionExtensions
 		Guard.IsNotNull(services);
 		Guard.IsNotNull(configureOptions);
 
-		services.Configure(configureOptions);
+		_ = services.Configure(configureOptions);
 		services.DoAddAlphaVantageClient();
 
 		return services;
@@ -64,16 +64,16 @@ public static class AlphaVantageServiceCollectionExtensions
 
 	private static void DoAddAlphaVantageClient(this IServiceCollection services)
 	{
-		services.PostConfigure<AlphaVantageOptions>(o =>
+		_ = services.PostConfigure<AlphaVantageOptions>(o =>
 		{
 			Guard.IsNotNull(o.ApiKey, "AlphaVantage ApiKey");
 			Guard.IsGreaterThan(o.MaxApiCallsPerMinute, 0, "AlphaVantage MaxApiCallsPerMinute");
 		});
 
-		services.AddSingleton(sp =>
+		_ = services.AddSingleton(sp =>
 			new AlphaVantageClient.RateLimiter(
 				sp.GetRequiredService<IOptions<AlphaVantageOptions>>().Value.MaxApiCallsPerMinute));
-		services
+		_ = services
 			.AddRefitClient<IAlphaVantageApi>(settings: new()
 			{
 				ContentSerializer = new SystemTextJsonContentSerializer(AlphaVantageClient.JsonSerializerOptions),
@@ -81,7 +81,7 @@ public static class AlphaVantageServiceCollectionExtensions
 			.ConfigureHttpClient(c => c.BaseAddress = new Uri("https://www.alphavantage.co/"))
 			.ConfigurePrimaryHttpMessageHandler(() =>
 				new HttpClientHandler { AutomaticDecompression = System.Net.DecompressionMethods.All, });
-		services.AddTransient(sp =>
+		_ = services.AddTransient(sp =>
 			new AlphaVantageClient(
 				sp.GetRequiredService<AlphaVantageClient.RateLimiter>(),
 				sp.GetRequiredService<IAlphaVantageApi>(),

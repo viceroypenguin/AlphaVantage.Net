@@ -1,15 +1,10 @@
-﻿using Xunit;
+using Xunit;
 
 namespace AlphaVantage.Tests;
 
-public sealed class FundmentalsTests : IClassFixture<AlphaVantageFixture>
+public sealed class FundmentalsTests(AlphaVantageFixture fixture) : IClassFixture<AlphaVantageFixture>
 {
-	private readonly AlphaVantageFixture _fixture;
-
-	public FundmentalsTests(AlphaVantageFixture fixture)
-	{
-		_fixture = fixture;
-	}
+	private readonly AlphaVantageFixture _fixture = fixture;
 
 	[Fact]
 	public async Task VerifyCompanySummary() =>

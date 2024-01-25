@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AlphaVantage.Tests;
@@ -17,8 +17,8 @@ public sealed class AlphaVantageFixture
 			.Build();
 
 		var services = new ServiceCollection();
-		services.AddSingleton<IConfiguration>(_ => configuration);
-		services.AddAlphaVantageClient();
+		_ = services.AddSingleton<IConfiguration>(_ => configuration);
+		_ = services.AddAlphaVantageClient();
 
 		_serviceProvider = services.BuildServiceProvider();
 		Client = _serviceProvider.GetRequiredService<AlphaVantageClient>();
