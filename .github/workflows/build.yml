@@ -6,13 +6,9 @@ on:
     branches: 
       - 'master'
     paths-ignore:
-      - 'readme.md'
-    tags:
-      - '**'
+      - '**/readme.md'
   pull_request:
     types: [opened, synchronize, reopened]
-
-concurrency: alphavantage_api
 
 jobs:
   build:
@@ -21,11 +17,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: 'csharp'
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
@@ -43,23 +34,7 @@ jobs:
       env:
         ALPHAVANTAGEOPTIONS__APIKEY: ${{ secrets.AlphaVantageApiKey }}
         ALPHAVANTAGEOPTIONS__MAXAPICALLSPERMINUTE: 35
-      run: dotnet test -c Release --no-build --verbosity normal
+      run: dotnet test -c Release --no-build --logger GitHubActions
 
     - name: Upload coverage reports to Codecov with GitHub Action
       uses: codecov/codecov-action@v3
-      
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
-
-    - name: Package 
-      if: startsWith(github.ref, 'refs/tags/')
-      run: dotnet pack -c Release --no-build -o nupkgs
-    - name: Push to Nuget
-      if: startsWith(github.ref, 'refs/tags/')
-      run: dotnet nuget push "./nupkgs/*.nupkg" --source "https://api.nuget.org/v3/index.json" --api-key ${{ secrets.NUGETPUBLISHKEY }}
-    - name: Create Release
-      if: startsWith(github.ref, 'refs/tags/')
-      uses: ncipollo/release-action@v1
-      with:
-        generateReleaseNotes: 'true'
-        makeLatest: 'true'
