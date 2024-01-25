@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace AlphaVantage.Fundamentals;
+﻿namespace AlphaVantage.Fundamentals;
 
 /// <summary>
 /// Annual and quarterly earnings information for an equity.
@@ -8,7 +6,7 @@ namespace AlphaVantage.Fundamentals;
 public sealed class EarningsResponse
 {
 #pragma warning disable CS1591
-	public required string symbol { get; set; }
+	public required string Symbol { get; set; }
 	public required IReadOnlyList<AnnualEarnings> AnnualEarnings { get; set; }
 	public required IReadOnlyList<QuarterlyEarnings> QuarterlyEarnings { get; set; }
 #pragma warning restore CS1591

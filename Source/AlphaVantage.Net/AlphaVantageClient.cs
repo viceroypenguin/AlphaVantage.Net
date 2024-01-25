@@ -91,7 +91,7 @@ public sealed partial class AlphaVantageClient
 
 	private async Task<TResponse> WrapJsonCall<TResponse>(Func<Task<TResponse>> apiCall, CancellationToken cancellationToken)
 	{
-		using var lease = await _rateLimiter.AcquireAsync(cancellationToken);
+		using var lease = await _rateLimiter.AcquireAsync(cancellationToken).ConfigureAwait(false);
 		if (!lease.IsAcquired)
 			ThrowHelper.ThrowTimeoutException();
 
@@ -100,7 +100,7 @@ public sealed partial class AlphaVantageClient
 
 	private async Task<IReadOnlyList<TResponse>> WrapCsvCall<TResponse>(Func<Task<Stream>> apiCall, CancellationToken cancellationToken)
 	{
-		using var lease = await _rateLimiter.AcquireAsync(cancellationToken);
+		using var lease = await _rateLimiter.AcquireAsync(cancellationToken).ConfigureAwait(false);
 		if (!lease.IsAcquired)
 			ThrowHelper.ThrowTimeoutException();
 
@@ -113,7 +113,8 @@ public sealed partial class AlphaVantageClient
 #if NET7_0_OR_GREATER
 				cancellationToken
 #endif
-				);
+			).ConfigureAwait(false);
+
 			var json = JsonSerializer.Deserialize<JsonElement>(str);
 			var error = json.GetProperty("Error Message").GetString()!;
 			throw new AlphaVantageException(error, str);

@@ -1,15 +1,10 @@
-﻿using Xunit;
+using Xunit;
 
 namespace AlphaVantage.Tests;
 
-public sealed class IndicatorsTests : IClassFixture<AlphaVantageFixture>
+public sealed class IndicatorsTests(AlphaVantageFixture fixture) : IClassFixture<AlphaVantageFixture>
 {
-	private readonly AlphaVantageFixture _fixture;
-
-	public IndicatorsTests(AlphaVantageFixture fixture)
-	{
-		_fixture = fixture;
-	}
+	private readonly AlphaVantageFixture _fixture = fixture;
 
 	[Fact]
 	public async Task VerifyRealGdp() =>
