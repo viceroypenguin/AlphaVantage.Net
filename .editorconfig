@@ -216,6 +216,7 @@ csharp_preserve_single_line_statements = true
 dotnet_analyzer_diagnostic.category-Style.severity = warning
 dotnet_diagnostic.IDE0046.severity = none               # IDE0046: Convert to conditional expression
 dotnet_diagnostic.IDE0130.severity = none               # IDE0130: Namespace does not match folder structure
+dotnet_diagnostic.CA1056.severity = none                # CA1056: URI-like properties should not be strings
 
 # XML Documentation
 dotnet_diagnostic.CS0105.severity = error               # CS0105: Using directive is unnecessary.

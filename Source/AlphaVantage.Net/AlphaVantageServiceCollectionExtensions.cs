@@ -1,4 +1,4 @@
-﻿using AlphaVantage;
+using AlphaVantage;
 using CommunityToolkit.Diagnostics;
 
 namespace Microsoft.Extensions.DependencyInjection;
@@ -77,6 +77,7 @@ public static class AlphaVantageServiceCollectionExtensions
 			.AddRefitClient<IAlphaVantageApi>(settings: new()
 			{
 				ContentSerializer = new SystemTextJsonContentSerializer(AlphaVantageClient.JsonSerializerOptions),
+				UrlParameterFormatter = new UrlParameterFormatter(),
 			})
 			.ConfigureHttpClient(c => c.BaseAddress = new Uri("https://www.alphavantage.co/"))
 			.ConfigurePrimaryHttpMessageHandler(() =>
