@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.Json.Serialization;
 using CommunityToolkit.Diagnostics;
@@ -65,7 +65,12 @@ public sealed partial class AlphaVantageClient
 			{
 				BaseAddress = new Uri("https://www.alphavantage.co/"),
 			},
-			settings: new() { ContentSerializer = new SystemTextJsonContentSerializer(JsonSerializerOptions), });
+			settings: new()
+			{
+				ContentSerializer = new SystemTextJsonContentSerializer(JsonSerializerOptions),
+				UrlParameterFormatter = new UrlParameterFormatter(),
+			}
+		);
 		_apiKey = apiKey;
 		_logger = logger ?? NullLogger<AlphaVantageClient>.Instance;
 	}

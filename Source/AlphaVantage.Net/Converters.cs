@@ -1,4 +1,4 @@
-﻿using System.Globalization;
+using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace AlphaVantage;
@@ -35,4 +35,19 @@ internal sealed class InvalidDateOnlyConverter : JsonConverter<DateOnly?>
 		else
 			writer.WriteStringValue(value.Value.ToString("yyyy'-'MM'-'dd", CultureInfo.InvariantCulture));
 	}
+}
+
+#pragma warning disable CA1812
+
+/// <inheritdoc/>
+internal sealed class DateTimeOffsetConverter : JsonConverter<DateTimeOffset>
+{
+	public override DateTimeOffset Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) =>
+		new(
+			DateTime.ParseExact(reader.GetString()!, "yyyyMMddTHHmmss", null),
+			TimeSpan.Zero
+		);
+
+	public override void Write(Utf8JsonWriter writer, DateTimeOffset value, JsonSerializerOptions options) =>
+		writer.WriteStringValue(value);
 }
