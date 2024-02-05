@@ -49,7 +49,7 @@ public class SentimentFeedItem
 	[JsonPropertyName("topics")]
 	public required IReadOnlyList<SentimentFeedTopic> Topics { get; set; }
 	[JsonPropertyName("overall_sentiment_score")]
-	public required float OverallSentimentScore { get; set; }
+	public required double OverallSentimentScore { get; set; }
 	[JsonPropertyName("overall_sentiment_label")]
 	public required string OverallSentimentLabel { get; set; }
 	[JsonPropertyName("ticker_sentiment")]
@@ -66,7 +66,7 @@ public class SentimentFeedTopic
 	[JsonPropertyName("topic")]
 	public required string Topic { get; set; }
 	[JsonPropertyName("relevance_score")]
-	public required string RelevanceScore { get; set; }
+	public required double RelevanceScore { get; set; }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
 }
 
@@ -79,9 +79,9 @@ public class SentimentFeedTickerSentiment
 	[JsonPropertyName("ticker")]
 	public required string Ticker { get; set; }
 	[JsonPropertyName("relevance_score")]
-	public required string RelevanceScore { get; set; }
+	public required double RelevanceScore { get; set; }
 	[JsonPropertyName("ticker_sentiment_score")]
-	public required string TickerSentimentScore { get; set; }
+	public required double TickerSentimentScore { get; set; }
 	[JsonPropertyName("ticker_sentiment_label")]
 	public required string TickerSentimentLabel { get; set; }
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
