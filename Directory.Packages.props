@@ -38,7 +38,7 @@
 
 	<ItemGroup>
 		<PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-		<PackageVersion Include="coverlet.collector" Version="6.0.0" />
+		<PackageVersion Include="coverlet.collector" Version="6.0.1" />
 		<PackageVersion Include="coverlet.msbuild" Version="6.0.0" />
 		<PackageVersion Include="CsvHelper" Version="31.0.0" />
 		<PackageVersion Include="GitHubActionsTestLogger" Version="2.3.3" />
