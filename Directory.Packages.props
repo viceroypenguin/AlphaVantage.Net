@@ -11,7 +11,7 @@
 		<PackageVersion Include="Refit" Version="7.0.0" />
 		<PackageVersion Include="Refit.HttpClientFactory" Version="7.0.0" />
 		<PackageVersion Include="System.Net.Http.Json" Version="8.0.0" />
-		<PackageVersion Include="System.Text.Json" Version="8.0.0" />
+		<PackageVersion Include="System.Text.Json" Version="8.0.3" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net7.0' ">
@@ -38,19 +38,19 @@
 
 	<ItemGroup>
 		<PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
-		<PackageVersion Include="coverlet.collector" Version="6.0.0" />
-		<PackageVersion Include="coverlet.msbuild" Version="6.0.0" />
-		<PackageVersion Include="CsvHelper" Version="31.0.0" />
+		<PackageVersion Include="coverlet.collector" Version="6.0.2" />
+		<PackageVersion Include="coverlet.msbuild" Version="6.0.2" />
+		<PackageVersion Include="CsvHelper" Version="31.0.2" />
 		<PackageVersion Include="GitHubActionsTestLogger" Version="2.3.3" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
 		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-		<PackageVersion Include="MinVer" Version="4.3.0" />
+		<PackageVersion Include="MinVer" Version="5.0.0" />
 		<PackageVersion Include="PolySharp" Version="1.14.1" />
 		<PackageVersion Include="System.Threading.RateLimiting" Version="8.0.0" />
-		<PackageVersion Include="xunit" Version="2.6.6" />
-		<PackageVersion Include="xunit.runner.visualstudio" Version="2.5.6" />
+		<PackageVersion Include="xunit" Version="2.7.0" />
+		<PackageVersion Include="xunit.runner.visualstudio" Version="2.5.7" />
 	</ItemGroup>
 </Project>
