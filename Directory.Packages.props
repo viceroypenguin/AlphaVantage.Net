@@ -40,7 +40,7 @@
 		<PackageVersion Include="CommunityToolkit.Diagnostics" Version="8.2.2" />
 		<PackageVersion Include="coverlet.collector" Version="6.0.2" />
 		<PackageVersion Include="coverlet.msbuild" Version="6.0.2" />
-		<PackageVersion Include="CsvHelper" Version="31.0.2" />
+		<PackageVersion Include="CsvHelper" Version="32.0.3" />
 		<PackageVersion Include="GitHubActionsTestLogger" Version="2.3.3" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
