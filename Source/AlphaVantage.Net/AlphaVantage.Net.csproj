@@ -3,7 +3,7 @@
   <PropertyGroup>
 		<AssemblyName>AlphaVantage</AssemblyName>
 		<RootNamespace>AlphaVantage</RootNamespace>
-		<TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+		<TargetFrameworks>net8.0</TargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup Label="NuGet">
@@ -26,10 +26,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Copyright>
-			Copyright © 2023 Turning Code, LLC
-		</Copyright>
-		<Copyright>$([System.Text.RegularExpressions.Regex]::Replace($(Copyright), `\s+`, ` `).Trim())</Copyright>
+		<Copyright>Copyright © 2024 Turning Code, LLC</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>
