@@ -37,6 +37,7 @@ public static class AlphaVantageServiceCollectionExtensions
 		_ = services
 			.AddOptions<AlphaVantageOptions>()
 			.BindConfiguration(sectionPath);
+
 		services.DoAddAlphaVantageClient();
 
 		return services;
@@ -72,7 +73,10 @@ public static class AlphaVantageServiceCollectionExtensions
 
 		_ = services.AddSingleton(sp =>
 			new AlphaVantageClient.RateLimiter(
-				sp.GetRequiredService<IOptions<AlphaVantageOptions>>().Value.MaxApiCallsPerMinute));
+				sp.GetRequiredService<IOptions<AlphaVantageOptions>>().Value.MaxApiCallsPerMinute
+			)
+		);
+
 		_ = services
 			.AddRefitClient<IAlphaVantageApi>(settings: new()
 			{
@@ -81,12 +85,15 @@ public static class AlphaVantageServiceCollectionExtensions
 			})
 			.ConfigureHttpClient(c => c.BaseAddress = new Uri("https://www.alphavantage.co/"))
 			.ConfigurePrimaryHttpMessageHandler(() =>
-				new HttpClientHandler { AutomaticDecompression = System.Net.DecompressionMethods.All, });
+				new HttpClientHandler { AutomaticDecompression = System.Net.DecompressionMethods.All, }
+			);
+
 		_ = services.AddTransient(sp =>
 			new AlphaVantageClient(
 				sp.GetRequiredService<AlphaVantageClient.RateLimiter>(),
 				sp.GetRequiredService<IAlphaVantageApi>(),
-				sp.GetRequiredService<IOptions<AlphaVantageOptions>>(),
-				sp.GetService<ILogger<AlphaVantageClient>>()));
+				sp.GetRequiredService<IOptions<AlphaVantageOptions>>()
+			)
+		);
 	}
 }
