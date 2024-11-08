@@ -69,7 +69,6 @@ public sealed partial class AlphaVantageClient
 			}
 		);
 		_apiKey = apiKey;
-		_logger = logger ?? NullLogger<AlphaVantageClient>.Instance;
 	}
 
 	/// <summary>
