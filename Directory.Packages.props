@@ -10,12 +10,12 @@
 		<PackageVersion Include="CsvHelper" Version="33.0.1" />
 		<PackageVersion Include="GitHubActionsTestLogger" Version="2.4.1" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
-		<PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.0" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="8.0.0" />
 		<PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="8.0.1" />
 		<PackageVersion Include="Microsoft.Extensions.Http" Version="8.0.1" />
 		<PackageVersion Include="Microsoft.Extensions.Logging" Version="8.0.1" />
-		<PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+		<PackageVersion Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.0" />
 		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
 		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
 		<PackageVersion Include="MinVer" Version="6.0.0" />
